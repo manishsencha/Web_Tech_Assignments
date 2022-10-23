@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Product | Web Tech Assignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+    <div class="row my-2 mx-1">
+        <table class="table table-striped table-responsive col-sm text-center">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="products-display">
+
+            </tbody>
+        </table>
+
+        <table id="purchase" class="table table-striped table-responsive col-sm text-center">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="purchase-summary">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="my-4 form-inline mx-1" style="max-width: 800px;">
+        <input class="form-control mr-2 col" name="email" placeholder="Email" type="email" id="email">
+        <input class="form-control mr-2 col" name="name" placeholder="Name" type="text" id="name">
+        <button type="submit" onclick="makePurchase()" class="btn btn-success">Place Order</button>
+    </div>
+</body>
+<script src="./index.js"></script>
+
+</html>

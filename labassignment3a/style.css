@@ -1,0 +1,15 @@
+#timer {
+  display: flex;
+  max-width: 550px;
+  font-size: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#timer div {
+  background-color: rgb(191, 46, 46);
+  color: #fff;
+  padding: 0.2em 0.5em;
+  border-radius: 3px;
+  min-width: 100px;
+}
