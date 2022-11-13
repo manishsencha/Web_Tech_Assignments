@@ -1,7 +1,7 @@
 {
-  "name": "jwt-auth-starter-nodejs",
+  "name": "book-rating-system",
   "version": "1.0.0",
-  "description": "JWT auth starter using nodejs",
+  "description": "Book rating system assigment web technology",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
