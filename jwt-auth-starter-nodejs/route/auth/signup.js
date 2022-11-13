@@ -27,12 +27,11 @@ module.exports = async (req, res) => {
 
         const token = jwt.sign({ user_id: user._id, email }, process.env.TOKEN_STRING, { expiresIn: "1d" })
 
-        user.token = token
+        const response_object = { email: email, fullName: first_name + " " + last_name, token: token };
 
-        return res.status(201).json(user)
+        return res.status(201).json(response_object)
     } catch (error) {
         console.log(error)
         return res.status(500).send("Server Error")
-
     }
 }

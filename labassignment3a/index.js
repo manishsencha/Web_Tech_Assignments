@@ -59,7 +59,7 @@ function validatePassword(password) {
 
 const user = {
   username: "manishsencha",
-  password: "testingapplication",
+  password: "Testingapplication@123",
 };
 
 function login(event) {

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 module.exports = async (req, res) => {
     try {
         const { email, password } = req.body
-        const user = await User.findOne({ email:email })
+        const user = await User.findOne({ email: email })
         if (user) {
             const verification = await bcrypt.compare(password, user.password);
             if (verification) {
@@ -19,14 +19,15 @@ module.exports = async (req, res) => {
                         expiresIn: "1d"
                     }
                 )
-                user.token = token
-                return res.status(200).json(user)
+                const response_object = { firstName: user.first_name, lastName: user.last_name, email: user.email, token }
+                // console.log("RESP : " + response_object)
+                return res.status(200).json(response_object)
             }
-            return res.status(400).send("Invalid password")
+            return res.status(400).json("Invalid password")
         }
-        return res.status(400).send("Invalid email")
+        return res.status(400).json("Invalid email")
     } catch (error) {
         console.log(error)
-        return res.status(500).send("Server Error")
+        return res.status(500).json("Server Error")
     }
 }

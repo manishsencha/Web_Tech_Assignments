@@ -220,7 +220,7 @@ function makePurchase() {
 
   purchase = {
     ...purchase,
-    name: customerEmail.value,
+    name: customerName.value,
     email: customerEmail.value,
   };
   //   purchase = JSON.parse(purchase);
