@@ -12,6 +12,9 @@ export function useAuth() {
 
 export default function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
+    const [notificationMessage, setNotificationMessage] = useState("")
+    const [notificationSeverity, setNotificationSeverity] = useState("success")
+    const [isNotificationOpen, setIsNotificationOpen] = useState(false)
     const navigator = useNavigate();
     async function signin(email, password) {
         try {
@@ -19,9 +22,10 @@ export default function AuthProvider({ children }) {
             setCurrentUser(response.data);
             console.log(response.data)
             localStorage.setItem('webt-bookrating-currentUser', JSON.stringify(response.data))
-            return response;
+            return response.data;
         } catch (error) {
-            return error.response;
+            console.log(error.response.data)
+            return error.response.data;
         }
 
     }
@@ -69,14 +73,24 @@ export default function AuthProvider({ children }) {
                 "x-access-token": localSavedUser ? localSavedUser.token : null
             }
         })
-            .then(() => setCurrentUser(localSavedUser)).then(() => navigator("/")).catch(error => console.log(error))
+            .then(() => setCurrentUser(localSavedUser)).then(() => {
+                setNotificationMessage("User logged in successfully")
+                setNotificationSeverity("success")
+                setIsNotificationOpen(true)
+                navigator("/")
+            }).catch(error => {
+                console.log(error)
+                setNotificationMessage("Failed to login using existing token!!")
+                setNotificationSeverity("danger")
+                setIsNotificationOpen(true)
+            })
     }
 
     useEffect(() => {
         verify()
     }, [])
 
-    const value = { currentUser, signin, signup, signout, getImage, rate, getBooks }
+    const value = { currentUser, notificationMessage, notificationSeverity, isNotificationOpen, signin, signup, signout, getImage, rate, getBooks }
     return (
         <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
     )

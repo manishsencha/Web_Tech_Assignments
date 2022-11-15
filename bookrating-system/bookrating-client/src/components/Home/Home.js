@@ -8,7 +8,6 @@ function Home() {
     const [page, setPage] = useState(1)
     const { currentUser, getBooks } = useAuth()
 
-
     function handlePageChange(event, value) {
         setPage(value)
     }

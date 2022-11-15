@@ -10,7 +10,7 @@ function Signup() {
     const [confirmPassword, setConfirmPassword] = useState("")
     const { signup } = useAuth()
 
-    const handleSubmit =async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // alert(email + " " + password)
         const data = await signup(firstName, lastName, email, password)
